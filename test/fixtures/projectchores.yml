@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyString
+  status: MyString
+  priority: MyString
+  owner: MyString
+  duedate: 2012-08-21 13:47:16
+
+two:
+  description: MyString
+  status: MyString
+  priority: MyString
+  owner: MyString
+  duedate: 2012-08-21 13:47:16

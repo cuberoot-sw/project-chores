@@ -1,0 +1,53 @@
+<%= form_for @projectchore do |f| %>
+
+  <% if @projectchore.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@projectchore.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @projectchore.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  
+
+
+  <div class="field">
+    <%= f.label :status %><br />
+    <% mystatuslist = [['New', 'New'], ['Assigned', 'Assigned'], ['Closed', 'Closed']] %>
+     <%= f.select :status, mystatuslist %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :owner %><br />
+    <% users_array = User.all.map { |user| [user.name, user.id] } %>
+    <%= f.select :user_id, options_for_select(users_array, "Choose") %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :priority %><br />
+    <% mylist = [['Low', 'Low'], ['Medium', 'Medium'], ['High', 'High'], ['Urgent', 'Urgent'], ['Immediate', 
+        'Immediate']] %>
+     <%= f.select :priority, mylist %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Duedate %><br />
+    <%= f.datetime_select :duedate, :start_year => 2012, :ampm => true %>
+     
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
