@@ -18,6 +18,11 @@ Projectask::Application.configure do
 
   config.action_mailer.perform_deliveries = true
 
+
+  # Mailer configuration
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  
   # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :smtp
 
@@ -49,7 +54,4 @@ Projectask::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-
-  # Mailer configuration
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

@@ -11,3 +11,85 @@
  *= require_self
  *= require_tree .
  */
+
+/*.container {
+  background-color: #fabcde;
+}*/
+
+/*.navbar navbar-inverse navbar-center-top{
+background-color: #ffffff;
+}*/
+
+
+.hero-unit {
+    background-color: #00FF00;
+    /*background-image: url("http://www.dvd-ppt-slideshow.com/images/ppt-background/background-13.jpg");*/
+    /*background-image: url("http://www.dvd-ppt-slideshow.com/images/ppt-background/background-2.jpg");*/
+    background-image: url("brown.jpeg");
+    /*background-image: url("Water-Drops.jpg");*/
+    border-radius: 6px 6px 6px 6px;
+    margin-bottom: 10px;
+    padding: 60px;
+}
+
+.footer {
+    background-color: #111111;
+    border-top: 1px solid #DDDDDD;
+    /*border-bottom: 1px solid #DDDDDD;*/
+    margin-bottom: 0;
+    padding: 1px 1px 1px;
+    text-align: right;
+}
+
+
+/*.pagination {
+    height: 40px;
+    margin: 10px 0;
+}*/
+
+
+/*.carousel-inner {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}*/
+
+
+
+
+/*.carousel .item > img {
+    display: block;
+    line-height: 1;
+}
+img {
+    border: 0 none;
+    height: auto;
+    max-width: 40%;
+    vertical-align: middle;
+}*/
+
+
+
+
+.carousel-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1px;
+  background: #333333;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.carousel-caption h6,
+.carousel-caption p {
+  line-height: 0.5px;
+  color: #ffffff;
+}
+
+.carousel-caption h6 {
+  margin: 0 0 5px;
+}

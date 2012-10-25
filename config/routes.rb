@@ -1,4 +1,7 @@
 Projectask::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  # devise_for :users, :path_names => { :sign_up => "register" }
   devise_for :users
 
   # get "projectchores/index"

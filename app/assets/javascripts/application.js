@@ -12,7 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require jquery-ui
 //= require_tree .
 
+
 // $('.created-at-datetime').datetimepicker({dateFormat: 'yy-mm-dd ', ampm: true});
+// $(document).ready(function() {
+//      $('.carousel').carousel();
+// });
+
+// $.fn.carousel.defaults = {
+//     interval: 2000
+//   , pause: 'hover'
+//   }

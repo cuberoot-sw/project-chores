@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Priority</Data></Cell>
+        <Cell><Data ss:Type="String">Duedate</Data></Cell>
+        <Cell><Data ss:Type="String">CreatedAt</Data></Cell>
+        <Cell><Data ss:Type="String">UpdatedAt</Data></Cell>
+      </Row>
+    <% @projectchores.each do |projectchore| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= projectchore.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= projectchore.description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= projectchore.status %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= projectchore.priority %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= projectchore.duedate %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= projectchore.created_at %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= projectchore.updated_at %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

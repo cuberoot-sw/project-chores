@@ -1,4 +1,6 @@
-<%= form_for @projectchore do |f| %>
+<div class= "row">
+  <div class="container-fluid">
+  <%= form_for @projectchore do |f| %>
 
   <% if @projectchore.errors.any? %>
     <div id="error_explanation">
@@ -12,42 +14,46 @@
     </div>
   <% end %>
 
-  
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
+
+    <div class="span12">
+      <%= f.label :description %>
+      <%= f.text_area :description, :cols => "10", :rows => "5" %><br><br>
+    </div>
   
 
+    <div class= "span3">
+       <%= f.label :status %>
+       <% mystatuslist = [['New', 'New'], ['Assigned', 'Assigned'], ['Closed', 'Closed']] %>
+        <%= f.select :status, mystatuslist, :class => "dropdown-menu", :role => "menu", :arialabelledby => "dropdownmenu" %>
+     <br><br>
+    </div>
 
-  <div class="field">
-    <%= f.label :status %><br />
-    <% mystatuslist = [['New', 'New'], ['Assigned', 'Assigned'], ['Closed', 'Closed']] %>
-     <%= f.select :status, mystatuslist %>
-  </div>
   
-  <div class="field">
-    <%= f.label :owner %><br />
+  <div class="span3">
+    <%= f.label :owner %>
     <% users_array = User.all.map { |user| [user.name, user.id] } %>
     <%= f.select :user_id, options_for_select(users_array, "Choose") %>
-
+    <br><br>
   </div>
 
-  <div class="field">
-    <%= f.label :priority %><br />
-    <% mylist = [['Low', 'Low'], ['Medium', 'Medium'], ['High', 'High'], ['Urgent', 'Urgent'], ['Immediate', 
-        'Immediate']] %>
+  <div class="span3">
+    <%= f.label :priority %>
+    <% mylist = [['Low', 'Low'], ['Medium', 'Medium'], ['High', 'High'], ['Urgent', 'Urgent'], ['Immediate', 'Immediate']] %>
      <%= f.select :priority, mylist %>
+     <br><br>
   </div>
 
-  <div class="field">
-    <%= f.label :Duedate %><br />
+  <div class="span16">
+    <%= f.label :Duedate %>
     <%= f.datetime_select :duedate, :start_year => 2012, :ampm => true %>
-     
+     <br><br>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="span12 actions">
+    <%= f.submit "Submit", :class => 'btn btn-primary' %><br>
+    <%= f.check_box :priority %><%= f.label :Mail_To_Admin %>
   </div>
-
-<% end %>
+       
+  <% end %>
+  </div>
+</div>

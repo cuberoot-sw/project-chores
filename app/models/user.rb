@@ -7,14 +7,23 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :role
-  # attr_accessible :title, :body
+  attr_accessible :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip
+  
+  # Modals relation
   has_many :projectchores
   accepts_nested_attributes_for :projectchores
 
-  ROLES = %w[admin moderator author]
+  # ROLES = %w[admin moderator author]
 
-  def role_symbols  
-    [role.to_sym]
-  end  
+  # def role_symbols  
+  #   [role.to_sym]
+  # end  
+
+  # Set default role to moderator for every signup user
+  before_save :default_values
+
+  def default_values
+    self.role = "moderator" if self.role.nil?
+  end
 
 end

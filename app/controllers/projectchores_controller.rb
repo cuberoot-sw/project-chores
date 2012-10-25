@@ -2,27 +2,41 @@ class ProjectchoresController < ApplicationController
 
   #the user should be logged in to perform any operation
   before_filter :authenticate_user!, :except => [:show, :index]
+  
 
-
-  # Added for CanCan Authorization
+    # Added for CanCan Authorization
   load_and_authorize_resource
 
-  rescue_from CanCan::AccessDenied do |exception|
-  flash[:error] = "Access denied."
-  redirect_to root_url
-  end
-
-  def index
+    def index
   # debugger
    	@projectchores = Projectchore.all
-            
+    myindexrender @projectchores 
+
+
+    # for Pagination
+    @projectchores = Projectchore.page(params[:page]).per(2)
+     myindexrender @projectchores
+
+
+     # for exporting data to/in .csv format
     respond_to do |format|
-      format.html 
-      format.json { render json: @projectchores }
-    end
+      format.html
+      format.csv {send_data @projectchores.to_csv }
+      # format.xls {send_data @projectchores.to_csv(col_sep: "\t")}
+      format.xls
+    end       
+    
   end
 
-
+  # method for rendering Index action
+  def myindexrender mytasks
+      respond_to do |format|
+      format.html 
+      format.json { render json: @mytasks }
+      return true
+      end
+  end
+  
 
   def new
    	@projectchore = Projectchore.new
