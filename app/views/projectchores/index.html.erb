@@ -1,60 +1,65 @@
 <%= render 'layouts/slide' %> 
 <%= render 'pagination' %>
 
+    <div class="row">
+        <div class="container-fluid">
+            <div class="span12">
+                <h2>Task Status</h2>
+                <!-- for csv and xls file download -->
+                <%if current_user && user_signed_in? %>
+                <p>
+                    Download:
+                    <%= link_to "CSV", projectchores_path(format: "csv") %> |
+                    <%= link_to "Excel", projectchores_path(format: "xls") %>
+                </p>
+                <% end %>
+                
+            </div>
+        </div>
+    </div>
 
-<!-- for csv and xls file download -->
 
     <div class="row">
         <div class="container-fluid">
             <div class="span12">
-            <h2>Task Status</h2>
-<p>
-  Download:
-  <%= link_to "CSV", projectchores_path(format: "csv") %> |
-  <%= link_to "Excel", projectchores_path(format: "xls") %>
-</p>
-</div>
-</div>
-</div>
-<!-- for csv and xls file download -->
-<div class="span12">
-    <div class="row">
-    <div class="container-fluid">
+                <table class="table table-hover">
+                    <tr>
+                        <th><em>Task_Id</em></th>
+                        <th><em>Task_Description</em></th>
+                        <th><em>Status</em></th>
+                        <th><em>Owner</em></th>
+                        <th><em>Priority</em></th>
+                        <th><em>Due_Date</em></th>
+                        <th><em>Display</em></th>
+                        <%if current_user && user_signed_in? %>
+                        <th><em>Update</em></th>
+                        <th><em>Remove</em></th>
+                        <% end %>
+                    </tr>
 
-    <table class="table table-hover">
-        <tr>
-            <th><em>Task_Id</em></th>
-            <th><em>Task_Description</em></th>
-            <th><em>Status</em></th>
-            <th><em>Owner</em></th>
-            <th><em>Priority</em></th>
-            <th><em>Due_Date</em></th>
-            <th><em>Display</em></th>
-            <th><em>Update</em></th>
-            <th><em>Remove</em></th>
-        </tr>
+                    <% @projectchores.each do |projectchore| %>
+                    <tr>
+                        <td><%= projectchore.id %></td>
+                        <td><%= projectchore.description %></td>
+                        <td><%= projectchore.status %></td>
+                        <td><%= projectchore.user.name %></td>
+                        <td><%= projectchore.priority %></td>
+                        <td><%= projectchore.duedate %></td>
+                        <td><%= link_to 'Show', projectchore, :class => 'btn btn-primary' %></td>
+                        <% if current_user && user_signed_in? %>
+                        <td><%= link_to 'Edit', edit_projectchore_path(projectchore), :class => 'btn btn-primary' %></td>
+                        <td><%= link_to 'Destroy', projectchore, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary' %></td>
+                        <% end %>
+                    </tr>
+                    <% end %>
+                </table>
+                <% if current_user && user_signed_in? %>
+                <%= link_to('New Task', new_projectchore_path, :class => 'btn btn-large btn-primary') %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 
-    <% @projectchores.each do |projectchore| %>
-        <tr>
-            <td><%= projectchore.id %></td>
-            <td><%= projectchore.description %></td>
-            <td><%= projectchore.status %></td>
-            <td><%= projectchore.user.name %></td>
-            <td><%= projectchore.priority %></td>
-            <td><%= projectchore.duedate %></td>
-            <td><%= link_to 'Show', projectchore, :class => 'btn btn-primary' %></td>
-            <td><%= link_to 'Edit', edit_projectchore_path(projectchore), :class => 'btn btn-primary' %></td>
-            <td><%= link_to 'Destroy', projectchore, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary' %></td>
-        </tr>
-    <% end %>
-
-    </table>
-
-<%= link_to('New Task', new_projectchore_path, :class => 'btn btn-large btn-primary')  %>
-</div>
-</div>
-</div>
-<br><br>
 
 
 

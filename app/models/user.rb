@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
   # end  
 
   # Set default role to moderator for every signup user
-  before_save :default_values
+  before_save :default_role_values
 
-  def default_values
+  def default_role_values
     self.role = "moderator" if self.role.nil?
   end
 

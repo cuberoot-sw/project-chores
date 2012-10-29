@@ -15,7 +15,7 @@
   <% end %>
 
 
-    <div class="span12">
+     <div class="span12">
       <%= f.label :description %>
       <%= f.text_area :description, :cols => "10", :rows => "5" %><br><br>
     </div>
@@ -36,6 +36,8 @@
     <br><br>
   </div>
 
+
+
   <div class="span3">
     <%= f.label :priority %>
     <% mylist = [['Low', 'Low'], ['Medium', 'Medium'], ['High', 'High'], ['Urgent', 'Urgent'], ['Immediate', 'Immediate']] %>
@@ -43,17 +45,18 @@
      <br><br>
   </div>
 
+
+
   <div class="span16">
     <%= f.label :Duedate %>
     <%= f.datetime_select :duedate, :start_year => 2012, :ampm => true %>
      <br><br>
   </div>
 
-  <div class="span12 actions">
-    <%= f.submit "Submit", :class => 'btn btn-primary' %><br>
-    <%= f.check_box :priority %><%= f.label :Mail_To_Admin %>
+  <div class="span4">
+    <%= f.submit :class=> "btn btn-large btn-primary" %>
   </div>
-       
+   
   <% end %>
   </div>
 </div>

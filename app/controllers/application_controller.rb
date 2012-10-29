@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+
 def authenticate_active_admin_user!
     # debugger
     authenticate_user!
@@ -11,6 +12,7 @@ def authenticate_active_admin_user!
       # redirect_to user_path(@user)
     end
   end
+
   
   # Authorization using CanCan.
   rescue_from CanCan::AccessDenied do |exception|
