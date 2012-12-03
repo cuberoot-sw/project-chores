@@ -1,25 +1,35 @@
 <h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 <div class="hero-unit">
-    <div class="row">
-        <div class="container-fluid">  
-  			<div><%= f.label :email %>
-  				<%= f.email_field :email %></div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+   
+  	   <div>
+          <%= f.label :email %>
+  				<%= f.email_field :email , :placeholder => "Login Email Id", :wrapper => :append do %>
+          <%= button_tag content_tag(:i, nil, class: 'icon-remove'), type: 'button', class: 'btn btn-danger' %>
+          <% end %>
+        
+        </div>
 
-  			<div><%= f.label :password %>
-  				<%= f.password_field :password %></div>
+  			<div>
+          <%= f.label :password %>
+  				<%= f.password_field :password, :placeholder => "Login Password" %>
+        </div>
+
 
   			<% if devise_mapping.rememberable? -%>
-    		<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    		  <div>
+            <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+          </div>
   			<% end -%>
 
-  			<div><%= f.submit "Sign in", :class => "btn btn-primary" %></div>
-  
-			<% end %>
-		</div>
-</div>
-</div>
 
+     		<div>
+          <%= f.submit "Sign in", :class => "btn btn-primary" %>
+        </div>
+
+    
+  <% end %>
+
+</div>
 <%= render "devise/shared/links" %>
 

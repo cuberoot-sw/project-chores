@@ -26,15 +26,15 @@ Projectask::Application.configure do
   # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  :domain               => "gmail.com",
-  :user_name            => "arvind.kishore@gmail.com",
-  :password             => "k2-*^bokar)",
-  :authentication       => "plain",
-  :enable_starttls_auto => true
-}
+#   config.action_mailer.smtp_settings = {
+#   :address              => "smtp.gmail.com",
+#   :port                 => 587,
+#   :domain               => "gmail.com",
+#   :user_name            => "admen.cuberoot@gmail.com",
+#   :password             => "admin#cube",
+#   :authentication       => "plain",
+#   :enable_starttls_auto => true
+# }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -54,4 +54,6 @@ Projectask::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.active_record.observers = :mailer_observer
 end

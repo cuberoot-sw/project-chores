@@ -59,5 +59,10 @@ module Projectask
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    # Added on 22nd Nov
+    # Activate observers that should always be running
+    config.active_record.observers = :mailer_observer
   end
 end

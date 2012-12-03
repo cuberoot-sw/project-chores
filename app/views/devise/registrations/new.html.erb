@@ -4,17 +4,17 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :Username %></div>
-  <div><%= f.text_field :name %></div><br>
+  <div><%= f.text_field :name,:placeholder => "Your Username"%></div><br>
 
 
   <div><%= f.label :email %>
-  <%= f.email_field :email %></div><br>
+  <%= f.email_field :email, :placeholder => "Email Id for Login" %></div><br>
 
   <div><%= f.label :password %>
-  <%= f.password_field :password %></div><br>
+  <%= f.password_field :password, :placeholder => "Assign Password" %></div><br>
 
   <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div><br>
+  <%= f.password_field :password_confirmation, :placeholder => "Re-type Password" %></div><br>
 
     <div><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
 <% end %>

@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-<div class= "row">
-   <div class= "container-fluid">
-     <div class= "span12">
+  
+     <div class= "hero-unit">
         <p>
           <b>Task ID:</b>
           <%= @projectchore.id %>
@@ -38,7 +37,7 @@
             <%= link_to 'Edit', edit_projectchore_path(@projectchore), :class => 'btn btn-primary' %> |
           <%end %>
 
-          <%= link_to 'Back', projectchores_path, :class => 'btn btn-primary' %><br><br>
-    </div>
-  </div>
+          <%= link_to 'Back', projectchores_path, :class => 'btn btn-primary' %>
+
+          
 </div>

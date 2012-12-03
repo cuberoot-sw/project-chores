@@ -45,5 +45,16 @@ gem 'cancan'
 gem 'activeadmin'
 
 #gem for pagination
-# gem will_paginate
+# gem kaminari goes well with rails as compared to will_paginate
 gem 'kaminari'
+
+#for performance monitoring
+# gem 'newrelic_rpm'
+
+# gem 'delayed_job', :git => 'https://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job_active_record'
+
+#Search functionality
+gem 'sunspot_rails'
+# gem 'sunspot_solr'
+gem "sunspot_with_kaminari", '~> 0.1'
