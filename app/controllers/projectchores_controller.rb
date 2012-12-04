@@ -6,56 +6,70 @@ class ProjectchoresController < ApplicationController
   # Added for CanCan Authorization
   load_and_authorize_resource
 
+
   def index
-        
-      # @projectchores = Projectchore.all
-      # myindexrender @projectchores 
-
-      #invoke search
-      # tasksearch
-
-    # for Pagination
-      # @projectchores = Projectchore.page(params[:page]).per(4)
-            @projectchores = Projectchore.search do 
-              paginate :page => params[:page], :per_page => 4
-            end
-       # myindexrender @projectchores
-
-
-    # for exporting data to/in .csv format
-      respond_to do |format|
-      format.html
-      format.csv {send_data @projectchores.to_csv }
-      # format.xls {send_data @projectchores.to_csv(col_sep: "\t")}
-      format.xls
-      end       
+      taskindex
+      tasksearch  
+      taskpaginate
+      taskdownload       
     end
 
-  # method for rendering Index action
-    def myindexrender mytasks
-      respond_to do |format|
-      format.html 
-      format.json { render json: @mytasks }
-      return true
+
+
+    def taskindex
+      @projectchores = Projectchore.all
+        respond_to do |format|
+        format.html 
+        format.json { render json: @projectchores }
+        return true
       end
     end
-  
 
-    # Task search functionality
+
+    def taskpaginate
+      # for Pagination
+      @projectchores = Projectchore.page(params[:page]).per(4)
+        respond_to do |format|
+        format.html 
+        format.json { render json: @projectchores }
+        return true
+      end
+    end
+
+
+    #Function for Data export in csv and excel format
+    def taskdownload
+        respond_to do |format|
+        format.html
+        format.csv {send_data @projectchores.to_csv }
+        format.xls {send_data @projectchores.to_csv(col_sep: "\t")}
+        format.xls
+        return true
+      end    
+    end
+
+ 
+
+    # Search 
     def tasksearch
        Rails.logger.info "**************ENTER SEARCH**************************************"
+      # debugger
       @search = Sunspot.search(Projectchore) do
         fulltext params[:search]
+
       end
-      @projectchores = @search
+      @projectchores = @search.results
+      Rails.logger.info "**************BEFORE RENDERING SEARCH**************************************"
       # debugger
-      # myindexrender @projectchores
-      respond_to do |format|
-      format.html 
-      format.json { render json: @projectchores }
+        respond_to do |format|
+        format.html 
+        format.json { render json: @projectchores }
+        Rails.logger.info "**************EXIT SEARCH**************************************" 
+        return true
       end
-      Rails.logger.info "**************EXIT SEARCH**************************************" 
+      
     end
+
 
 
     def new

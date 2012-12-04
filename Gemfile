@@ -54,7 +54,8 @@ gem 'kaminari'
 # gem 'delayed_job', :git => 'https://github.com/collectiveidea/delayed_job.git'
 gem 'delayed_job_active_record'
 
+gem 'progress_bar'
 #Search functionality
 gem 'sunspot_rails'
-# gem 'sunspot_solr'
-gem "sunspot_with_kaminari", '~> 0.1'
+gem 'sunspot_solr'
+gem "sunspot_with_kaminari"

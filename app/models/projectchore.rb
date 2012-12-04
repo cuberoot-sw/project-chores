@@ -4,7 +4,6 @@ class Projectchore < ActiveRecord::Base
   
   searchable do
     text :description, :boost => 5
-    text :status, :priority, :duedate
   end
 
    
